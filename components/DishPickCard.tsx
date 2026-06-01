@@ -1,0 +1,5 @@
+import type { DishPick } from "@/lib/types";
+
+export function DishPickCard({ dish, rank }: { dish: DishPick; rank: number }) {
+  return <div className="rounded-3xl border border-vora-line bg-vora-paper p-4"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-black text-vora-olive">#{rank} · {Math.round(dish.match_score * 100)}% fit</p><h4 className="mt-1 text-lg font-black tracking-[-0.04em] text-vora-ink">{dish.dish_name}</h4></div>{dish.price ? <span className="rounded-full bg-vora-paper2 px-3 py-1 text-xs font-black text-vora-muted">${dish.price.toFixed(0)}</span> : null}</div>{dish.description ? <p className="mt-2 text-sm leading-6 text-vora-muted">{dish.description}</p> : null}<div className="mt-3 flex flex-wrap gap-2">{dish.tags.slice(0, 4).map((tag) => <span key={tag} className="rounded-full bg-vora-paper2 px-2.5 py-1 text-xs font-bold text-vora-subtle">{tag}</span>)}</div>{dish.reasons.length ? <p className="mt-3 text-sm font-semibold leading-6 text-vora-muted">{dish.reasons[0]}</p> : null}</div>;
+}
